@@ -11,20 +11,26 @@ It is designed for **education, research, and professional ML/NLP portfolio demo
 
 The trained model weights (`transformer_model.pth`) are hosted on Hugging Face:
 
-👉 https://huggingface.co/<your-username>/<your-model-name>
+👉 **[Click here to download from HuggingFace](https://huggingface.co/ankpatil1203/transformer-eng-hin-from-scratch/blob/main/transformer_model.pth)**
 
-### Load the model:
+### Load the model in Python:
 
 ```python
 from huggingface_hub import hf_hub_download
 import torch
 from src.model import Transformer
 
-model_path = hf_hub_download("<your-username>/<your-model-name>", "transformer_model.pth")
+# Download model from HuggingFace Hub
+model_path = hf_hub_download(
+    repo_id="ankpatil1203/transformer-eng-hin-from-scratch",
+    filename="transformer_model.pth"
+)
 
+# Initialize architecture and load weights
 model = Transformer(src_vocab_size, trg_vocab_size)
 model.load_state_dict(torch.load(model_path, map_location="cpu"))
 model.eval()
+
 ```
 
 ---
@@ -45,7 +51,7 @@ model.eval()
 This project uses the **Hindi–English Parallel Corpus** from Kaggle.
 
 Dataset link:  
-https://www.kaggle.com/datasets/<dataset-link>
+👉 **[Click here to view/download the dataset](https://www.kaggle.com/datasets/vaibhavkumar11/hindi-english-parallel-corpus)**
 
 ### ⚠ Important  
 The dataset **is not included** in this repository due to size and license restrictions.
@@ -133,22 +139,45 @@ The training script performs:
 
 ---
 
-# 🧪 Inference After Loading Model
+## 🧪 Inference After Loading Model
 
 After calling `model.eval()`, you can translate English sentences to Hindi:
 
 ```python
+import torch, json
+from src.utils import preprocess_sentence, decode_ids, create_padding_mask
+from src.model import beam_search
+
+# Select device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model.to(device)
+model.eval()
+
+# Load vocabularies
+with open("vocab/vocab_en.json") as f:
+    vocab_en = json.load(f)
+
+with open("vocab/vocab_hi.json") as f:
+    vocab_hi = json.load(f)
+
 sentence = "give your application a workout"
 
+# Convert input sentence → token IDs
 src_ids = preprocess_sentence(sentence, vocab_en)
-src_tensor = torch.tensor([src_ids])
+src_tensor = torch.tensor([src_ids]).to(device)
 
-src_mask = create_padding_mask(src_tensor, pad_id=0)
+# Build mask
+src_mask = create_padding_mask(src_tensor, pad_id=0).to(device)
 
+# Beam search decoding
 pred_ids = beam_search(model, src_tensor, src_mask, beam_width=5)
 
+# Convert token IDs → Hindi text
 translation = decode_ids(pred_ids.tolist(), vocab_hi)
+
+print("Input      :", sentence)
 print("Translation:", translation)
+
 ```
 
 ---
