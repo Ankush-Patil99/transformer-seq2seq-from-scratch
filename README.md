@@ -196,18 +196,13 @@ print("BLEU Score:", bleu)
 # 🔥 Visualizations
 
 ### 📉 Training Loss Curve  
-Saved at:
-
-```
-results/images/loss_curve.png
-```
+A plot showing how the training loss decreases over epochs.  
+👉 **[Click here to view](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/blob/main/transformer-seq2seq-from-scratch/results/images/loss_curve.png)**
 
 ### 🎯 Attention Heatmap  
-Saved at:
+This heatmap visualizes how the model attends to English tokens while generating Hindi output.  
+👉 **[Click here to view](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/blob/main/transformer-seq2seq-from-scratch/results/images/attention_heatmap.png)**
 
-```
-results/images/attention_heatmap.png
-```
 
 ---
 
@@ -215,17 +210,18 @@ results/images/attention_heatmap.png
 
 | Metric | Value |
 |--------|--------|
-| BLEU Score | XX.XX (update with your score) |
+| BLEU Score | **49.76** |
+| Final Training Loss | **0.8258** |
+| Final Validation Loss | **1.0011** |
+| Decoding Method | Beam Search (beam = 5) |
 
 ---
 
 # 📝 Sample Translations
 
-A file containing sample predictions is available at:
+A file containing sample model predictions (English → Hindi translations) is available here:
 
-```
-results/metrics/sample_translations.csv
-```
+👉 **[Click here to view sample_translations.csv](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/blob/main/transformer-seq2seq-from-scratch/results/metrics/sample_translations.csv)**
 
 ---
 
@@ -267,6 +263,10 @@ MIT License
 **Ankush Patil**  
 Machine Learning & NLP Engineer  
 Deep Learning | Transformers | PyTorch
+
+- 📧 Email: **ankushpatil1203@gmail.com**
+- 🐙 GitHub: [github.com/Ankush-Patil99](https://github.com/Ankush-Patil99)
+- 💼 LinkedIn: [linkedin.com/in/ankush-patil-91603a233](https://www.linkedin.com/in/ankush-patil-91603a233/)
 
 ---
 
