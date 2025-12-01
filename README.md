@@ -33,11 +33,10 @@ model.eval()
 
 | Component | Link |
 |----------|------|
-| 📂 Source Code | https://github.com/<your-username>/<your-repo-name>/tree/main/src |
-| 📓 Jupyter Notebook | https://github.com/<your-username>/<your-repo-name>/blob/main/notebooks/transformers-eng-hin.ipynb |
-| 📊 Results (plots, metrics, translations) | https://github.com/<your-username>/<your-repo-name>/tree/main/results |
-| 🔤 Vocabulary Files | https://github.com/<your-username>/<your-repo-name>/tree/main/vocab |
-| 🗂 Data Folder (placeholder) | https://github.com/<your-username>/<your-repo-name>/tree/main/data |
+| 📓 Jupyter Notebook | [Click here](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/blob/main/transformer-seq2seq-from-scratch/notebooks/transformers-eng-hin.ipynb) |
+| 📊 Results (plots, metrics, translations) | [Click here](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/tree/main/transformer-seq2seq-from-scratch/results) |
+| 🔤 Vocabulary Files | [Click here](https://github.com/Ankush-Patil99/transformer-seq2seq-from-scratch/tree/main/transformer-seq2seq-from-scratch/vocab) |
+| 🔗 Dataset (Kaggle) | [Click here](https://www.kaggle.com/datasets/vaibhavkumar11/hindi-english-parallel-corpus) |
 
 ---
 
