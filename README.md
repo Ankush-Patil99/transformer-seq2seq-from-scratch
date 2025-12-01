@@ -1,2 +1,247 @@
-# transformer-seq2seq-from-scratch
-Custom Transformer encoder–decoder for English→Hindi translation, implemented entirely from scratch in PyTorch with attention visualizations and BLEU evaluation.
+# 🚀 Transformer English → Hindi Translation (From Scratch in PyTorch)
+
+This repository contains a complete **Transformer Encoder–Decoder architecture implemented entirely from scratch** using PyTorch.  
+Inspired by **“Attention Is All You Need” (Vaswani et al., 2017)**, the project manually implements every component of the Transformer without using `torch.nn.Transformer`.
+
+It is designed for **education, research, and professional ML/NLP portfolio demonstration**.
+
+---
+
+# 🌐 Pretrained Model (HuggingFace Hub)
+
+The trained model weights (`transformer_model.pth`) are hosted on Hugging Face:
+
+👉 https://huggingface.co/<your-username>/<your-model-name>
+
+### Load the model:
+
+```python
+from huggingface_hub import hf_hub_download
+import torch
+from src.model import Transformer
+
+model_path = hf_hub_download("<your-username>/<your-model-name>", "transformer_model.pth")
+
+model = Transformer(src_vocab_size, trg_vocab_size)
+model.load_state_dict(torch.load(model_path, map_location="cpu"))
+model.eval()
+```
+
+---
+
+# 📘 Project Links (GitHub Navigation)
+
+| Component | Link |
+|----------|------|
+| 📂 Source Code | https://github.com/<your-username>/<your-repo-name>/tree/main/src |
+| 📓 Jupyter Notebook | https://github.com/<your-username>/<your-repo-name>/blob/main/notebooks/transformers-eng-hin.ipynb |
+| 📊 Results (plots, metrics, translations) | https://github.com/<your-username>/<your-repo-name>/tree/main/results |
+| 🔤 Vocabulary Files | https://github.com/<your-username>/<your-repo-name>/tree/main/vocab |
+| 🗂 Data Folder (placeholder) | https://github.com/<your-username>/<your-repo-name>/tree/main/data |
+
+---
+
+# 📚 Dataset
+
+This project uses the **Hindi–English Parallel Corpus** from Kaggle.
+
+Dataset link:  
+https://www.kaggle.com/datasets/<dataset-link>
+
+### ⚠ Important  
+The dataset **is not included** in this repository due to size and license restrictions.
+
+To train the model:
+
+1. Download the dataset from Kaggle  
+2. Place the file into:
+
+```
+data/raw/
+```
+
+3. `train.py` will automatically split into training & validation sets.
+
+---
+
+# 🧠 Model Architecture
+
+The Transformer follows the Encoder–Decoder architecture with:
+
+- Multi-Head Self-Attention  
+- Cross-Attention  
+- Feed-Forward Networks  
+- Positional Encoding  
+- Layer Normalization  
+- Skip Connections  
+- Look-Ahead Masking  
+
+### Diagram
+
+```
+Input → Token Embedding → Positional Encoding → Encoder (N layers)
+                                                        ↓
+                       Target → Embedding → Positional Encoding → Decoder (N layers)
+                                                        ↓
+                                            Linear → Softmax → Output Tokens
+```
+
+### Hyperparameters
+
+| Component | Value |
+|----------|--------|
+| d_model | 256 |
+| heads | 4 |
+| encoder layers | 3 |
+| decoder layers | 3 |
+| FFN size | 512 |
+| dropout | 0.1 |
+| optimizer | Adam (lr = 3e-4) |
+| loss | Label Smoothing Loss |
+| decoding | Greedy & Beam Search |
+
+---
+
+# ⚙️ Installation
+
+```bash
+pip install torch einops sacrebleu matplotlib pandas huggingface_hub
+```
+
+---
+
+# 🏋️ Training Instructions
+
+Run training:
+
+```bash
+python src/train.py
+```
+
+The training script performs:
+
+- Data loading  
+- Cleaning & preprocessing  
+- Tokenization  
+- Vocabulary building  
+- Train/validation split  
+- Mask creation  
+- Forward/backward passes  
+- Label smoothing  
+- BLEU evaluation  
+- Loss tracking  
+- Model saving  
+
+---
+
+# 🧪 Inference After Loading Model
+
+After calling `model.eval()`, you can translate English sentences to Hindi:
+
+```python
+sentence = "give your application a workout"
+
+src_ids = preprocess_sentence(sentence, vocab_en)
+src_tensor = torch.tensor([src_ids])
+
+src_mask = create_padding_mask(src_tensor, pad_id=0)
+
+pred_ids = beam_search(model, src_tensor, src_mask, beam_width=5)
+
+translation = decode_ids(pred_ids.tolist(), vocab_hi)
+print("Translation:", translation)
+```
+
+---
+
+# 🎯 Compute BLEU Score
+
+```python
+from src.utils import compute_bleu
+
+bleu = compute_bleu(model, val_loader, vocab_en, vocab_hi)
+print("BLEU Score:", bleu)
+```
+
+---
+
+# 🔥 Visualizations
+
+### 📉 Training Loss Curve  
+Saved at:
+
+```
+results/images/loss_curve.png
+```
+
+### 🎯 Attention Heatmap  
+Saved at:
+
+```
+results/images/attention_heatmap.png
+```
+
+---
+
+# 📊 Results Summary
+
+| Metric | Value |
+|--------|--------|
+| BLEU Score | XX.XX (update with your score) |
+
+---
+
+# 📝 Sample Translations
+
+A file containing sample predictions is available at:
+
+```
+results/metrics/sample_translations.csv
+```
+
+---
+
+# 🔥 Why This Project Matters
+
+This project demonstrates:
+
+- Strong understanding of Transformer internals  
+- Ability to implement NLP architectures manually  
+- Clean engineering practices  
+- Multi-step training & evaluation workflow  
+- Visualization and analysis skills  
+- Integration with HuggingFace Hub  
+- Portfolio-ready structure and documentation  
+
+Perfect for ML Engineer / NLP Engineer roles.
+
+---
+
+# 🔮 Future Work Suggestions
+
+- Add LSTM / GRU Seq2Seq baseline for comparison  
+- Add Gradio UI for real-time translation  
+- Train a deeper Transformer  
+- Add FastAPI-based deployment  
+- Use pretrained embeddings (FastText, GloVe)  
+- Add mixed-precision training  
+
+---
+
+# 📄 License
+
+MIT License
+
+---
+
+# 👨‍💻 Author
+
+**Ankush Patil**  
+Machine Learning & NLP Engineer  
+Deep Learning | Transformers | PyTorch
+
+---
+
+# ⭐ Support
+
+If you found this project helpful, please consider giving it a **GitHub Star** ⭐
