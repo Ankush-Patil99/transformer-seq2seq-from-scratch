@@ -298,6 +298,3 @@ Deep Learning | Transformers | PyTorch
 
 ---
 
-# ⭐ Support
-
-If you found this project helpful, please consider giving it a **GitHub Star** ⭐
