@@ -1,9 +1,37 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch"/>
+  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Model-Transformer-green" alt="Transformer"/>
+  <img src="https://img.shields.io/badge/HuggingFace-Model-yellow?logo=huggingface&logoColor=white" alt="HF Model"/>
+  <img src="https://img.shields.io/github/stars/Ankush-Patil99/transformer-seq2seq-from-scratch?style=social" alt="GitHub Stars"/>
+</p>
+
 # 🚀 Transformer English → Hindi Translation (From Scratch in PyTorch)
 
 This repository contains a complete **Transformer Encoder–Decoder architecture implemented entirely from scratch** using PyTorch.  
 Inspired by **“Attention Is All You Need” (Vaswani et al., 2017)**, the project manually implements every component of the Transformer without using `torch.nn.Transformer`.
 
 It is designed for **education, research, and professional ML/NLP portfolio demonstration**.
+<details>
+<summary><h2>📚 Table of Contents</h2></summary>
+
+- [🌐 Pretrained Model (HuggingFace Hub)](#-pretrained-model-huggingface-hub)
+- [📘 Project Links](#-project-links-github-navigation)
+- [📚 Dataset](#-dataset)
+- [🧠 Model Architecture](#-model-architecture)
+- [⚙️ Installation](#️-installation)
+- [🏋️ Training Instructions](#️-training-instructions)
+- [🧪 Inference After Loading Model](#-inference-after-loading-model)
+- [🎯 Compute BLEU Score](#-compute-bleu-score)
+- [🔥 Visualizations](#-visualizations)
+- [📊 Results Summary](#-results-summary)
+- [📝 Sample Translations](#-sample-translations)
+- [🔥 Why This Project Matters](#-why-this-project-matters)
+- [🔮 Future Work Suggestions](#-future-work-suggestions)
+- [📄 License](#-license)
+- [👨‍💻 Author](#-author)
+
+</details>
 
 ---
 
